@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu Margin Compass User Manual | Creed-to-Commerce™</title>
+<meta name="description" content="How to use the Menu Margin Compass, how every number is calculated, and how to set it up for a client.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0B4D3A;--green2:#146B52;--green3:#E3F1EA;--gold:#C9A227;--gold2:#F4E9BE;--cream:#FBF7EA;--ink:#1B2A24;--mute:#5B6B63;--line:#D9D3BC;--bad:#B3261E;--warn:#B7791F;--good:#1E7A4F;--card:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Amiri,Georgia,serif;color:var(--green);margin:0 0 .4rem}
+h1{font-size:2rem}h2{font-size:1.45rem}h3{font-size:1.15rem}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+header.hero{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:22px 0 26px;border-bottom:5px solid var(--gold)}
+.basmala{font-family:Amiri,serif;font-size:1.9rem;text-align:center;color:var(--gold2);direction:rtl;margin-bottom:6px}
+.hero h1{color:#fff;text-align:center;font-size:2.2rem}
+.hero p{text-align:center;margin:.2rem auto 0;max-width:720px;color:#e6f2ec}
+.tag{display:inline-block;background:var(--gold);color:#241d00;font-weight:700;border-radius:99px;padding:2px 12px;font-size:.78rem;letter-spacing:.04em}
+.hero .tagrow{text-align:center;margin-top:10px}
+main{padding:20px 0 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0;box-shadow:0 1px 0 rgba(11,77,58,.05)}
+.card>h2{border-bottom:2px solid var(--gold);padding-bottom:4px;margin-bottom:12px}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+label{display:block;font-size:.8rem;font-weight:600;color:var(--mute);margin-bottom:3px}
+input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+input[type=range]{padding:0;accent-color:var(--green)}
+button,.btn{cursor:pointer;border:0;border-radius:9px;padding:9px 14px;font:600 .9rem Inter,sans-serif;background:var(--green);color:#fff;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{background:var(--green2)}
+button.gold{background:var(--gold);color:#241d00}button.gold:hover{background:#b8921f}
+button.ghost{background:transparent;color:var(--green);border:1px solid var(--green)}button.ghost:hover{background:var(--green3)}
+button.danger{background:#fff;color:var(--bad);border:1px solid var(--bad)}button.danger:hover{background:#fdeceb}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.kpi{background:var(--green3);border-radius:12px;padding:12px 14px;border-left:5px solid var(--green)}
+.kpi .v{font:700 1.5rem Inter;color:var(--green)}.kpi .l{font-size:.78rem;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.kpi.gold{background:var(--gold2);border-left-color:var(--gold)}
+.verdict{border-radius:12px;padding:14px 16px;margin:12px 0;font-weight:600;border:2px solid}
+.verdict.good{background:#E4F4EB;border-color:var(--good);color:#0f4f31}
+.verdict.warn{background:#FFF4DC;border-color:var(--warn);color:#6b4a0c}
+.verdict.bad{background:#FDECEA;border-color:var(--bad);color:#7d1a14}
+.verdict small{display:block;font-weight:400;margin-top:3px}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{background:var(--green);color:#fff;text-align:left;padding:8px;font-weight:600;position:sticky;top:0}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+td input,td select{padding:5px 7px}
+.scroll{overflow-x:auto}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.75rem;font-weight:700}
+.p-star{background:#E4F4EB;color:#0f4f31}.p-plow{background:#FFF4DC;color:#6b4a0c}.p-puzzle{background:#E8EEFB;color:#23407a}.p-dog{background:#FDECEA;color:#7d1a14}
+.note{font-size:.8rem;color:var(--mute)}
+.cta{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border-radius:14px;padding:18px;margin:16px 0;border:2px solid var(--gold)}
+.cta h2{color:#fff;border:0}.cta p{margin:.3rem 0 .8rem;color:#e6f2ec}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 18px;border-radius:99px;box-shadow:0 6px 20px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.25s;z-index:20}
+.toast.on{opacity:1}
+footer.site{background:var(--green);color:#cfe3d9;padding:20px 0;text-align:center;border-top:5px solid var(--gold);font-size:.85rem}
+footer.site b{color:var(--gold2);font-family:Amiri,serif;font-size:1.05rem}
+.printhead{display:none}
+@media print{
+ body{background:#fff}.noprint,header.hero button,.toast{display:none!important}
+ header.hero{padding:10px 0;background:#fff;color:#000;border-bottom:3px solid var(--gold)}
+ .hero h1,.hero p{color:var(--green)}.basmala{color:var(--green)}
+ .card{box-shadow:none;break-inside:avoid}.cta{display:none}
+ .printhead{display:block;font-weight:600}
+ input,select{border:0!important;padding:0!important;background:transparent!important;appearance:none}
+}
+@media(max-width:640px){h1{font-size:1.6rem}.hero h1{font-size:1.7rem}}
+</style>
+</head>
+<body>
+<header class="hero">
+ <div class="wrap">
+  <div class="basmala">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <h1>Menu Margin Compass: User Manual</h1>
+  <p>How to use the Menu Margin Compass, how every number is calculated, and how to set it up for a client.</p>
+  <div class="tagrow"><span class="tag">CREED-TO-COMMERCE™</span></div>
+ </div>
+</header>
+<main class="wrap">
+<style>
+.toc{columns:2;column-gap:28px;padding-left:18px;margin:6px 0}
+.toc li{margin:3px 0;break-inside:avoid}
+.toc a,.manual a{color:var(--green);font-weight:600}
+.manual h2{margin-top:6px}
+.manual p,.manual li{max-width:78ch}
+.formula{background:#fffdf5;border-left:5px solid var(--gold);padding:10px 14px;margin:10px 0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;overflow-x:auto;white-space:pre-wrap}
+.callout{background:var(--green3);border-left:5px solid var(--green);padding:10px 14px;border-radius:8px;margin:12px 0}
+.callout.warn{background:#FFF4DC;border-left-color:var(--warn)}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps>li{counter-increment:s;position:relative;padding:8px 8px 8px 46px;margin:8px 0;background:#fffdf5;border:1px solid var(--line);border-radius:10px}
+.steps>li::before{content:counter(s);position:absolute;left:10px;top:8px;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;text-align:center;font-weight:700;line-height:26px}
+@media(max-width:700px){.toc{columns:1}}
+@media print{.card{break-inside:auto}.toc{columns:1}a{color:#000;text-decoration:none}}
+</style>
+
+<div class="noprint" style="text-align:right;margin-top:12px"><a href="index.html" style="color:var(--green);font-weight:600">Open the app</a> &nbsp;·&nbsp; <a href="#" onclick="window.print();return false" style="color:var(--green);font-weight:600">Print this manual</a></div>
+
+<div class="card manual">
+ <h2>Contents</h2>
+ <ol class="toc">
+  <li><a href="#welcome">Welcome</a></li>
+  <li><a href="#quickstart">Quick start in five steps</a></li>
+  <li><a href="#screens">The screen, section by section</a></li>
+  <li><a href="#fields">Field reference and default values</a></li>
+  <li><a href="#categories">Categories and food cost targets</a></li>
+  <li><a href="#math">How every number is calculated</a></li>
+  <li><a href="#example">Worked example with the sample menu</a></li>
+  <li><a href="#classes">The four dish classes and what to do</a></li>
+  <li><a href="#actions">Applying prices, printing and exporting</a></li>
+  <li><a href="#inputs">Getting accurate inputs</a></li>
+  <li><a href="#privacy">Your data and privacy</a></li>
+  <li><a href="#custom">Setting the app up for a client</a></li>
+  <li><a href="#faq">Troubleshooting and questions</a></li>
+  <li><a href="#limits">What the app cannot do</a></li>
+  <li><a href="#glossary">Glossary</a></li>
+ </ol>
+</div>
+
+<div class="card manual" id="welcome">
+ <h2>1 · Welcome</h2>
+ <p>The Menu Margin Compass shows a café or restaurant owner which dishes make money, which lose it, and which price changes would recover profit. You enter each dish's price, what it costs to make and how many you sell in a month. The app does the rest and updates every figure as you type.</p>
+ <p>It answers five questions:</p>
+ <ul>
+  <li>Is my overall food cost healthy, compared with the targets for my own mix of dishes?</li>
+  <li>Which categories are leaking money?</li>
+  <li>Which dishes are my Stars, Plowhorses, Puzzles and Dogs?</li>
+  <li>What price should I charge for each over-cost dish, allowing for customers who buy less when prices rise?</li>
+  <li>How much extra profit does the plan return every month and every year?</li>
+ </ul>
+ <div class="callout"><b>Everything stays on your device.</b> The app has no account, no server and no upload. Figures you enter are saved only in your own browser.</div>
+</div>
+
+<div class="card manual" id="quickstart">
+ <h2>2 · Quick start in five steps</h2>
+ <ol class="steps">
+  <li><b>Look at the sample first.</b> The app opens with a sample Madinah menu so you can see every feature working. Scroll down to see the verdict, the map and the action plan.</li>
+  <li><b>Clear the sample.</b> In section 3 press <b>Clear all data</b> and confirm. This removes the sample dishes and anything saved on the device.</li>
+  <li><b>Enter your business details.</b> In section 1 type your business name and check the currency.</li>
+  <li><b>Add your dishes.</b> Press <b>+ Add dish</b> for each item. Choose a category, then enter the selling price, the cost to make and the number sold per month. Start with your best sellers if time is short.</li>
+  <li><b>Read the results, then decide.</b> Check the verdict in section 4 and the plan in section 7. Press <b>Apply recommended prices</b> to see the effect, <b>Undo</b> to go back, and <b>Print / Save PDF report</b> to keep a copy.</li>
+ </ol>
+</div>
+
+<div class="card manual" id="screens">
+ <h2>3 · The screen, section by section</h2>
+ <table>
+  <thead><tr><th style="width:24%">Section</th><th>What it does</th></tr></thead>
+  <tbody>
+   <tr><td><b>1 · Your Café Details</b></td><td>Business name, currency, the fallback food cost target, how sensitive your customers are to price, and how dishes are compared with each other.</td></tr>
+   <tr><td><b>2 · Category Targets</b></td><td>One food cost target for each category. Edit a target, add your own category, remove one, or restore the defaults.</td></tr>
+   <tr><td><b>3 · Menu &amp; Monthly Sales</b></td><td>Your dishes. Add, edit and remove rows. Buttons load the sample menu, export a CSV, or clear all data.</td></tr>
+   <tr><td><b>4 · Your Profit Health</b></td><td>Four headline figures, a verdict banner (Healthy, Watch or Leaking) and a table of results by category.</td></tr>
+   <tr><td><b>5 · Menu Engineering Map</b></td><td>A chart that places each numbered dish by popularity and profit per plate. A key beside it lists the dishes.</td></tr>
+   <tr><td><b>6 · What-If</b></td><td>A slider that changes every price at once and shows the effect on monthly profit after customers buy less.</td></tr>
+   <tr><td><b>7 · Your Action Plan</b></td><td>Every dish, sorted by money to recover, with its class, food cost, target, suggested price and what to do.</td></tr>
+   <tr><td><b>Approval bar</b></td><td>Apply the recommended prices in one click, undo them, or print the report.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<div class="card manual" id="fields">
+ <h2>4 · Field reference and default values</h2>
+ <div class="scroll"><table>
+  <thead><tr><th>Field</th><th>What to enter</th><th>Default</th><th>Notes</th></tr></thead>
+  <tbody>
+   <tr><td>Prepared for</td><td>Your business name</td><td>Empty</td><td>Appears in the heading of the printed report.</td></tr>
+   <tr><td>Currency</td><td>Up to four characters, such as SAR</td><td>SAR</td><td>A label only. The app does not convert currencies.</td></tr>
+   <tr><td>Fallback food cost target %</td><td>Target for dishes whose category has no target of its own</td><td>30</td><td>Allowed 5 to 90.</td></tr>
+   <tr><td>Customer price sensitivity</td><td>How much sales fall when you raise a price</td><td>1.0</td><td>0 means no drop. 0.5 loyal customers. 1.0 typical: a 10% price rise loses about 10% of sales. 2.0 very sensitive. Allowed 0 to 4.</td></tr>
+   <tr><td>Compare dishes</td><td>Within their own category, or against the whole menu</td><td>Within category</td><td>See <a href="#math">how every number is calculated</a>.</td></tr>
+   <tr><td>Category target %</td><td>Food cost target for the category</td><td>See the table in section 5</td><td>Allowed 5 to 90.</td></tr>
+   <tr><td>Dish name</td><td>Any text</td><td>None</td><td></td></tr>
+   <tr><td>Category</td><td>Choose from the list</td><td>First category</td><td>Add new categories in section 2 first.</td></tr>
+   <tr><td>Price</td><td>What the customer pays for one serving</td><td>20 for a new dish</td><td>A dish with a price of 0 is ignored in every calculation.</td></tr>
+   <tr><td>Cost to make</td><td>Ingredients plus packaging for one serving</td><td>7 for a new dish</td><td>Zero or more. See section 10.</td></tr>
+   <tr><td>Sold per month</td><td>Servings sold in a typical month</td><td>100 for a new dish</td><td>Zero or more. Use your till or POS report.</td></tr>
+   <tr><td>Across-the-board price change</td><td>A trial change applied to every price</td><td>0%</td><td>Slider from −15% to +25%. It never changes your saved prices.</td></tr>
+  </tbody>
+ </table></div>
+</div>
+
+<div class="card manual" id="categories">
+ <h2>5 · Categories and food cost targets</h2>
+ <p>Drinks cost far less to make than meat dishes, so one target for the whole menu would hide problems and raise false alarms. The app therefore gives every category its own target. The starting values are common industry rules of thumb and are not guarantees. Your rent, wages and positioning decide what you need, so set each target to the level your business requires.</p>
+ <div class="scroll"><table>
+  <thead><tr><th>Category</th><th>Default target</th><th>Why it sits there</th></tr></thead>
+  <tbody>
+   <tr><td>Rice &amp; Mains</td><td>35%</td><td>Large meat portions with a modest cost of rice.</td></tr>
+   <tr><td>Grills</td><td>36%</td><td>Premium meat and fish cost more per plate.</td></tr>
+   <tr><td>Wraps &amp; Sandwiches</td><td>30%</td><td>Bread and sauces are cheap, so shawarma and falafel can run lower.</td></tr>
+   <tr><td>Starters &amp; Sides</td><td>28%</td><td>Hummus, salads and fries are low-cost items.</td></tr>
+   <tr><td>Hot Drinks</td><td>20%</td><td>Tea, karak and coffee have a very low ingredient cost.</td></tr>
+   <tr><td>Cold Drinks</td><td>25%</td><td>Fresh fruit makes juices dearer than hot drinks.</td></tr>
+   <tr><td>Desserts</td><td>28%</td><td>Sugar and dairy are moderate in cost.</td></tr>
+   <tr><td>Breakfast</td><td>30%</td><td>Eggs, bread and foul sit near the middle.</td></tr>
+  </tbody>
+ </table></div>
+ <p><b>The blended target.</b> The app also shows one overall target. It is the average of your category targets, weighted by how much each dish sells, so a menu that is mostly drinks gets a lower overall target than one that is mostly grills. The verdict compares your actual food cost with this blended target.</p>
+ <p><b>Adding and removing categories.</b> Type a name in section 2 and press <b>+ Add category</b>. A new category starts with the fallback target. Removing a category does not delete its dishes; they then use the fallback target.</p>
+</div>
+
+<div class="card manual" id="math">
+ <h2>6 · How every number is calculated</h2>
+ <p>Only dishes with a price above zero are included. For each dish:</p>
+ <div class="formula">Profit per plate     = price − cost to make
+Food cost %          = cost to make ÷ price × 100
+Monthly sales        = price × sold per month
+Monthly profit       = profit per plate × sold per month</div>
+ <h3>The four classes</h3>
+ <p>Dishes are classified by the standard menu-engineering method. Each dish is compared with the others in its group, which is its own category when the category has at least three dishes, and the whole menu otherwise (or always the whole menu if you choose that option).</p>
+ <div class="formula">Average dish sales   = group units sold ÷ number of dishes in group
+Popularity index     = dish units ÷ average dish sales
+Popular?             yes when popularity index ≥ 0.70
+Group average profit = group monthly profit ÷ group units sold
+Profit index         = profit per plate ÷ group average profit
+High profit?         yes when profit per plate ≥ group average profit</div>
+ <p>Popular and high profit is a Star. Popular and low profit is a Plowhorse. Not popular and high profit is a Puzzle. Neither is a Dog. The map in section 5 plots the two indexes, so 1.0 is an average dish and the dashed lines show the cut-offs.</p>
+ <h3>The recommended price</h3>
+ <div class="formula">Applies only when a dish's food cost % is above its target.
+Price to reach target = cost to make ÷ (target ÷ 100), rounded UP to the next 0.50
+Largest rise allowed  = price × 1.25, rounded DOWN to 0.50
+Suggested price       = the smaller of the two, never below today's price
+Lost volume           = units × sensitivity × (suggested − price) ÷ price
+New units             = units − lost volume   (never below zero)
+Gain per month        = (suggested − cost) × new units − (price − cost) × units</div>
+ <p>If the gain is zero or negative, because customers would buy too much less, the app keeps today's price and recommends nothing. If the capped price is still above target, the action text tells you to also reduce portion size or ingredient cost.</p>
+ <h3>The headline figures</h3>
+ <div class="formula">Monthly sales          = sum of dish sales
+Food cost %            = sum of (cost × units) ÷ monthly sales × 100
+Monthly gross profit   = monthly sales − total cost of food sold
+Recoverable per month  = sum of the gains above (dishes with gain only)
+Blended target         = sum of (target × dish sales) ÷ monthly sales
+Verdict                = Healthy when food cost % ≤ blended target
+                         Watch when it is up to 5 points over
+                         Leaking when it is more than 5 points over</div>
+ <h3>The what-if slider</h3>
+ <div class="formula">New price = price × (1 + change)
+New units = units × (1 − sensitivity × change)   (never below zero)
+Profit    = sum of (new price − cost) × new units</div>
+ <p>The slider is a test only. It does not change the prices in your menu.</p>
+</div>
+
+<div class="card manual" id="example">
+ <h2>7 · Worked example with the sample menu</h2>
+ <p>The sample menu has 17 dishes in seven categories. With the default targets and a sensitivity of 1.0 the app shows:</p>
+ <div class="grid g4">
+  <div class="kpi"><div class="l">Monthly sales</div><div class="v">SAR 123,705</div></div>
+  <div class="kpi"><div class="l">Food cost % (target 30.6%)</div><div class="v">33.8%</div></div>
+  <div class="kpi"><div class="l">Monthly gross profit</div><div class="v">SAR 81,919</div></div>
+  <div class="kpi gold"><div class="l">Recoverable per month</div><div class="v">SAR 2,444</div></div>
+ </div>
+ <p>Food cost is 3.2 points above the blended target, so the verdict is <b>Watch</b>. The worked steps for one dish follow.</p>
+ <h3>Lamb Mandi (category Rice &amp; Mains)</h3>
+ <ol>
+  <li>Price 48.00, cost 21.60, 310 sold a month. Profit per plate is 48 − 21.60 = <b>26.40</b>. Food cost is 21.60 ÷ 48 = <b>45.0%</b>, above the 35% target.</li>
+  <li>The category has three dishes, so dishes are compared within it. Units sold: 640 + 310 + 420 = 1,370, an average of 456.7 per dish. The popularity cut-off is 0.70 × 456.7 = 319.7. Lamb Mandi sells 310, so it is <b>not popular</b>.</li>
+  <li>Group average profit per plate is (17.40 × 640 + 26.40 × 310 + 17.40 × 420) ÷ 1,370 = 19.44. Lamb Mandi earns 26.40, so it is <b>high profit</b>. Not popular and high profit makes it a <b>Puzzle</b>.</li>
+  <li>Price to reach the target is 21.60 ÷ 0.35 = 61.71, rounded up to 62.00. The largest rise allowed is 48 × 1.25 = 60.00. The suggested price is the smaller figure, <b>60.00</b>, a rise of 25%.</li>
+  <li>With sensitivity 1.0, units fall by 25%, from 310 to 232.5. Profit today is 26.40 × 310 = 8,184. Profit at the new price is (60 − 21.60) × 232.5 = 8,928. The gain is <b>744 a month</b>.</li>
+ </ol>
+ <p>Because the rise was capped at 25%, the dish is still above target after the change (36% at 60.00). The action plan therefore also suggests trimming the portion or cost.</p>
+ <h3>Results by category</h3>
+ <div class="scroll"><table>
+  <thead><tr><th>Category</th><th>Food cost %</th><th>Target</th><th>Recoverable / month</th></tr></thead>
+  <tbody><tr><td>Rice &amp; Mains</td><td>38.5%</td><td>35%</td><td>1,048</td></tr><tr><td>Grills</td><td>42.2%</td><td>36%</td><td>570</td></tr><tr><td>Wraps &amp; Sandwiches</td><td>34.1%</td><td>30%</td><td>528</td></tr><tr><td>Starters &amp; Sides</td><td>22.5%</td><td>28%</td><td>—</td></tr><tr><td>Hot Drinks</td><td>21.3%</td><td>20%</td><td>46</td></tr><tr><td>Cold Drinks</td><td>31.2%</td><td>25%</td><td>252</td></tr><tr><td>Desserts</td><td>27.4%</td><td>28%</td><td>—</td></tr></tbody>
+ </table></div>
+</div>
+
+<div class="card manual" id="classes">
+ <h2>8 · The four dish classes and what to do</h2>
+ <table>
+  <thead><tr><th>Class</th><th>Meaning</th><th>What to do</th></tr></thead>
+  <tbody>
+   <tr><td><span class="pill p-star">Star</span></td><td>Sells well and earns well.</td><td>Protect it. Put it first on the menu, keep quality high and do not discount it.</td></tr>
+   <tr><td><span class="pill p-plow">Plowhorse</span></td><td>Sells well but earns little per plate.</td><td>Raise the price a little, trim the portion, or negotiate the ingredient cost. Do not remove it: customers come for it.</td></tr>
+   <tr><td><span class="pill p-puzzle">Puzzle</span></td><td>Earns well but sells slowly.</td><td>Sell more of it. Rename it, add a photograph, train staff to suggest it, or try a combo.</td></tr>
+   <tr><td><span class="pill p-dog">Dog</span></td><td>Sells slowly and earns little per plate.</td><td>Bundle it with a Star or retire it to cut waste and complexity.</td></tr>
+  </tbody>
+ </table>
+ <div class="callout warn"><b>Read a Dog with care.</b> Classes depend on profit per plate. A cheap item with a healthy food cost, such as a low-priced sandwich, can be a Dog yet still be worth keeping as a traffic builder or a side. Use judgment before removing anything.</div>
+</div>
+
+<div class="card manual" id="actions">
+ <h2>9 · Applying prices, printing and exporting</h2>
+ <ul>
+  <li><b>Apply recommended prices</b> changes the prices in your menu to the suggested prices, only for dishes where the app found a gain. A message tells you how many prices changed. If there is nothing to change, it says so.</li>
+  <li><b>Undo</b> restores the prices from before the last apply. It remembers one step.</li>
+  <li><b>Print / Save PDF report</b> opens the print dialog. Choose <b>Save as PDF</b> as the destination. The report carries your business name and the date, and leaves out buttons and editing controls.</li>
+  <li><b>Export CSV</b> downloads the table of dishes with class, food cost, target, suggested price and monthly gain, for use in a spreadsheet.</li>
+  <li><b>Clear all data</b> removes every dish and the business name saved on this device. Your category targets and settings keep their values. Use it before entering real figures or before handing a shared device to someone else.</li>
+ </ul>
+</div>
+
+<div class="card manual" id="inputs">
+ <h2>10 · Getting accurate inputs</h2>
+ <ul>
+  <li><b>Cost to make</b> should cover every ingredient in one serving at the price you actually pay, plus packaging such as boxes, bags and cups. Weigh portions once so the recipe cost is real.</li>
+  <li><b>Allow for waste.</b> If a chicken loses 25% of its weight in trimming, cost the usable weight, not the weight you bought.</li>
+  <li><b>Sold per month</b> should be a typical month. If you are near Ramadan, Hajj or Umrah peaks, use an average of busy and quiet months, or run the app twice and compare.</li>
+  <li><b>Enter combos as their own dish</b> with the combined price and combined cost.</li>
+  <li><b>Do not include rent, wages or utilities.</b> Food cost counts only what goes on the plate. Those costs belong in the Lease Viability Compass.</li>
+  <li><b>Keep names and categories consistent</b> so the category results are meaningful.</li>
+ </ul>
+</div>
+
+<div class="card manual" id="privacy">
+ <h2>11 · Your data and privacy</h2>
+ <p>The app runs entirely in your browser. It sends nothing to a server. Your figures are saved in the browser's local storage on this device and are not shared. Clearing your browser's site data also removes them. If you use a shared or public computer, press <b>Clear all data</b> when you finish. Export a CSV if you want a copy to keep.</p>
+</div>
+
+<div class="card manual" id="custom">
+ <h2>12 · Setting the app up for a client</h2>
+ <p>This section is for the consultant who deploys the app for a business.</p>
+ <ol>
+  <li>Publish the folder to its own GitHub repository and import it into Vercel. No build step is needed.</li>
+  <li>Open the app and enter the client's business name. Set the currency and adjust the category targets to the client's cost structure.</li>
+  <li>Load the client's real menu in a first working session, so the first report they see uses their own figures.</li>
+  <li>To change the defaults permanently, edit the <code>DEFAULT_CATS</code> and <code>SAMPLE</code> lists near the top of the script in <code>index.html</code>. Colors are set in the <code>:root</code> block of the stylesheet.</li>
+  <li>Keep one repository and one Vercel project per product. Never share data between products or clients.</li>
+ </ol>
+</div>
+
+<div class="card manual" id="faq">
+ <h2>13 · Troubleshooting and questions</h2>
+ <table>
+  <thead><tr><th style="width:34%">Question</th><th>Answer</th></tr></thead>
+  <tbody>
+   <tr><td>A dish is missing from the results.</td><td>Its price is 0 or empty. Dishes without a price are ignored. Enter the price.</td></tr>
+   <tr><td>The verdict says "Add your dishes".</td><td>There are no dishes with a price and sales. Add at least one dish with a price and a monthly quantity.</td></tr>
+   <tr><td>The app suggests no price change for a dish that is over target.</td><td>Raising the price would lose more in sales than it gains, at your sensitivity setting. Try a lower sensitivity if your customers are loyal, or reduce the recipe cost instead.</td></tr>
+   <tr><td>The suggested price is only 25% higher and the dish is still over target.</td><td>Rises are capped at 25% so a single change stays realistic. Reduce the portion or cost as well, or phase the price in over two steps.</td></tr>
+   <tr><td>Every dish in a category is a Star, or none is.</td><td>With one or two dishes in a category the app compares them with the whole menu. Add more dishes to the category, or switch the comparison setting.</td></tr>
+   <tr><td>I applied the recommended prices, but the app still shows money to recover.</td><td>Two reasons. A single price rise is capped at 25%, so a dish that was far over target can still be over target afterwards. And the "Sold per month" figures are still your old sales. Run the new prices for a month, then enter your real sales and read the plan again.</td></tr>
+   <tr><td>My figures disappeared.</td><td>Browser data was cleared, or you used a private window or another device. Figures are stored per browser.</td></tr>
+   <tr><td>The report prints on too many pages.</td><td>In the print dialog set the paper to A4, turn on background graphics, and choose Save as PDF.</td></tr>
+   <tr><td>Can I enter prices in another currency?</td><td>Yes. Change the currency label and enter all figures in that currency. The app does no conversion.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<div class="card manual" id="limits">
+ <h2>14 · What the app cannot do</h2>
+ <ul>
+  <li>It cannot predict exactly how customers will react. The sensitivity setting is an assumption. Test a price change on a few dishes first, then check your sales.</li>
+  <li>It does not include rent, wages, utilities, delivery fees or taxes.</li>
+  <li>It treats each dish independently. It cannot see that a customer who skips a dearer dish may buy a cheaper one instead.</li>
+  <li>Category targets are rules of thumb. Replace them with targets that match your own business.</li>
+  <li>The results are decision support, not financial advice and not a guarantee of results.</li>
+ </ul>
+</div>
+
+<div class="card manual" id="glossary">
+ <h2>15 · Glossary</h2>
+ <table>
+  <tbody>
+   <tr><td><b>Food cost %</b></td><td>The share of the selling price spent on ingredients and packaging.</td></tr>
+   <tr><td><b>Profit per plate</b></td><td>Selling price minus cost to make. Also called contribution margin.</td></tr>
+   <tr><td><b>Menu engineering</b></td><td>A method that sorts dishes by popularity and profit per plate into four classes.</td></tr>
+   <tr><td><b>Popularity index</b></td><td>A dish's sales divided by the average dish in its group. 1.0 is average.</td></tr>
+   <tr><td><b>Profit index</b></td><td>A dish's profit per plate divided by the group average. 1.0 is average.</td></tr>
+   <tr><td><b>Price sensitivity</b></td><td>The percentage drop in sales for each 1% rise in price. Economists call it price elasticity.</td></tr>
+   <tr><td><b>Blended target</b></td><td>The average of the category targets, weighted by each dish's sales.</td></tr>
+   <tr><td><b>Recoverable per month</b></td><td>The extra monthly profit if every recommended price is applied, after the volume that customers are expected to lose.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+</main>
+<footer class="site">
+ <div class="wrap">
+  <b>Creed-to-Commerce™</b> · The Balanced Middle Path Academy, LLC (BMPA)<br>
+  Decision-support estimates based on the figures you enter. Not financial, legal or investment advice, and not a guarantee of results.
+ </div>
+</footer>
+<div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=v=>{const n=parseFloat(v);return isFinite(n)?n:0};
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,isNaN(x)?a:x));
+const fmt=(n,d=0)=>(isFinite(n)?n:0).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('on'),2200)}
+function lsGet(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function lsDel(k){try{localStorage.removeItem(k)}catch(e){}}
+function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:type||'text/plain'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+</script>
+
+</body>
+</html>
